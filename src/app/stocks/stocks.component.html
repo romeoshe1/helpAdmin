@@ -1,0 +1,51 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id="theForm">
+        <h2>search Stock</h2>
+        <form #f="ngForm" name="theForm">
+          <div class="form-group">
+            <input type="search" (input)="getStock($event.target.value)" class="form-control"   >
+
+          </div>
+          <div class="col"  *ngFor="let item of stocks;let i = index;">
+            <div class="row" style="border:1px solid blue"  (click)="updateTable(item.Symbol)"> {{item.Name}}</div>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Name</th>
+          <th scope="col">Base price</th>
+          <th scope="col">Price</th>
+          <th scope="col">Bid Size</th>
+          <th scope="col">Bid Price</th>
+          <th scope="col">Ask Size</th>
+          <th scope="col">Ask Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let dd of SymbolDitals ;let i = index;">
+          <td><div ><input type="button" value="+" (click)="deleteSymbol(dd[0].Symbol)"></div></td>
+          <td>{{dd[0].Symbol}}</td>
+          <td>{{dd[0].Name}}</td>
+          <td>{{dd[0].BasePrice}}</td>
+          <td>{{dd[0].LastPrice}}</td>
+          <td>{{dd[0].Bid}}</td>
+          <td>{{dd[0].BidSize}}</td>
+          <td>{{dd[0].Ask}}</td>
+          <td>{{dd[0].AskSize}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
